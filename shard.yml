@@ -1,0 +1,18 @@
+name: aws
+version: 0.1.0
+
+dependencies:
+  awscr-signer:
+    github: taylorfinnell/awscr-signer
+
+development_dependencies:
+  webmock:
+    github: manastech/webmock.cr
+    branch: master
+
+authors:
+  - Serdar Dogruyol <dogruyolserdar@gmail.com>
+
+crystal: 0.25.1
+
+license: MIT
