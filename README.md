@@ -2,7 +2,7 @@
 
 Unofficial AWS SDK integration for Crystal.
 
-Status: This is still very much WIP
+*Status*: This is still very much WIP (Work in Progress).
 
 ## Installation
 
@@ -48,4 +48,4 @@ client.send_message("sqs-crystal", "Hi from Crystal!")
 
 ## Thanks
 
-Thanks to @taylorfinnell for his work on https://github.com/taylorfinnell/awscr-signer
+Thanks to [@taylorfinnell](https://github.com/taylorfinnell) for his work on https://github.com/taylorfinnell/awscr-signer
