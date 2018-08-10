@@ -1,5 +1,5 @@
 module Aws
-  module Sqs
+  module Utils
     class XML
       # :nodoc:
       struct NamespacedNode

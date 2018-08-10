@@ -2,7 +2,7 @@ require "uri"
 require "xml"
 
 module Aws
-  module Sqs
+  module Utils
     class Http
       # Exception raised when Sqs gives us a non 200 http status code. The error
       # will have a specific message from Sqs.
@@ -19,7 +19,8 @@ module Aws
       end
 
       def initialize(@signer : Awscr::Signer::Signers::Interface,
-                     @region : String = standard_us_region,
+                     @service_name : String,
+                     @region : String,
                      @custom_endpoint : String? = nil)
         @http = HTTP::Client.new(endpoint)
 
@@ -100,18 +101,12 @@ module Aws
       # :nodoc:
       private def endpoint : URI
         return URI.parse(@custom_endpoint.to_s) if @custom_endpoint
-        return default_endpoint if @region == standard_us_region
-        URI.parse("http://#{SERVICE_NAME}.#{@region}.amazonaws.com")
-      end
-
-      # :nodoc:
-      private def standard_us_region
-        "us-east-1"
+        URI.parse("http://#{@service_name}.#{@region}.amazonaws.com")
       end
 
       # :nodoc:
       private def default_endpoint : URI
-        URI.parse("http://#{SERVICE_NAME}.amazonaws.com")
+        URI.parse("http://#{@service_name}.amazonaws.com")
       end
     end
   end

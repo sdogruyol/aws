@@ -1,7 +1,7 @@
 require "./*"
 
 # AWS S3 access via Crystal.
-module Aws::Sqs
+module Aws::S3
   # :nodoc:
-  SERVICE_NAME = "sqs"
+  SERVICE_NAME = "s3"
 end

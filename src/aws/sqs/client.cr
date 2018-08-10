@@ -21,7 +21,8 @@ module Aws
       @signer : Awscr::Signer::Signers::Interface
 
       def initialize(@region : String, @aws_access_key : String, @aws_secret_key : String, @endpoint : String? = nil, signer : Symbol = :v4)
-        @signer = SignerFactory.get(
+        @signer = Utils::SignerFactory.get(
+          service_name: Aws::Sqs::SERVICE_NAME,
           version: signer,
           region: @region,
           aws_access_key: @aws_access_key,
@@ -44,7 +45,7 @@ module Aws
 
       # :nodoc:
       private def http
-        Http.new(@signer, @region, @endpoint)
+        Utils::Http.new(signer: @signer, service_name: Aws::Sqs::SERVICE_NAME, region: @region, custom_endpoint: @endpoint)
       end
     end
   end

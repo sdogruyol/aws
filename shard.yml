@@ -9,6 +9,9 @@ development_dependencies:
   webmock:
     github: manastech/webmock.cr
     branch: master
+  timecop:
+    github: waterlink/timecop.cr
+    version: ~> 0.1.0
 
 authors:
   - Serdar Dogruyol <dogruyolserdar@gmail.com>

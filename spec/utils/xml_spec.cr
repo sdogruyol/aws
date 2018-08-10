@@ -1,7 +1,7 @@
 require "../spec_helper"
 
 module Aws
-  module Sqs
+  module Utils
     describe XML do
       it "handle flattened" do
         resp = <<-RESP
