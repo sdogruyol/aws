@@ -363,7 +363,7 @@ module Aws::S3
         output = client.list_buckets
 
         output.should eq(Response::ListAllMyBuckets.new([
-          Bucket.new("quotes", Time.parse("2006-02-03T16:45:09 +00:00", Response::ListAllMyBuckets::DATE_FORMAT)),
+          Bucket.new("quotes", Time.parse_utc("2006-02-03T16:45:09 +00:00", Response::ListAllMyBuckets::DATE_FORMAT)),
         ]))
       end
     end

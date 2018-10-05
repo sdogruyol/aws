@@ -8,7 +8,7 @@ dependencies:
 development_dependencies:
   webmock:
     github: manastech/webmock.cr
-    branch: master
+    version: 0.10.0
   timecop:
     github: waterlink/timecop.cr
     version: ~> 0.1.0
@@ -16,6 +16,6 @@ development_dependencies:
 authors:
   - Serdar Dogruyol <dogruyolserdar@gmail.com>
 
-crystal: 0.25.1
+crystal: 0.26.1
 
 license: MIT
