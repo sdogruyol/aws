@@ -1,5 +1,4 @@
-require "../../spec_helper"
-require "tempfile"
+require "../spec_helper"
 
 module Aws::S3
   describe FileUploader do
@@ -96,7 +95,7 @@ module Aws::S3
         client = Client.new(REGION, "key", "secret")
         uploader = FileUploader.new(client)
 
-        tempfile = Tempfile.new("foo", ".svg")
+        tempfile = File.tempfile(".svg")
         file = File.open(tempfile.path)
 
         uploader.upload("bucket", "object", file).should be_true
@@ -117,7 +116,7 @@ module Aws::S3
         options = FileUploader::Options.new(with_content_types: false)
         uploader = FileUploader.new(client, options)
 
-        tempfile = Tempfile.new("foo", ".svg")
+        tempfile = File.tempfile(".svg")
         file = File.open(tempfile.path)
 
         uploader.upload("bucket", "object", file).should be_true

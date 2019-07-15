@@ -1,5 +1,4 @@
-require "../../spec_helper"
-require "tempfile"
+require "../spec_helper"
 
 module Aws::S3
   describe ContentType do
@@ -13,7 +12,7 @@ module Aws::S3
     describe "when the io is a file" do
       it "returns the correct Content-Type" do
         ContentType::TYPES.keys.each do |ext|
-          tempfile = Tempfile.new("foo", ext)
+          tempfile = File.tempfile(ext)
           file = File.open(tempfile.path)
           ContentType.get(file).should be(ContentType::TYPES[ext])
           tempfile.delete
@@ -23,7 +22,7 @@ module Aws::S3
 
     describe "when the io is a file and the extension is unknown" do
       it "returns the default Content-Type" do
-        tempfile = Tempfile.new("foo", ".spicy")
+        tempfile = File.tempfile(".spicy")
         file = File.open(tempfile.path)
         ContentType.get(file).should be(ContentType::DEFAULT)
         tempfile.delete
