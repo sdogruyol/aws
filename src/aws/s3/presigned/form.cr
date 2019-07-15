@@ -16,7 +16,7 @@ module Aws
         #
         # ```
         # Aws::S3::Presigned::Form.build("us-east-1", "aws key", "aws secret") do |form|
-        #   form.expiration(Time.epoch(Time.now.epoch + 1000))
+        #   form.expiration(Time.utc_now.to_unix + 1000)
         #   form.condition("bucket", "my bucket")
         #   form.condition("acl", "public-read")
         #   form.condition("key", "helloworld.png")
