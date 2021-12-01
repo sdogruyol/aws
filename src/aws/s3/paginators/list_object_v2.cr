@@ -30,7 +30,7 @@ module Aws::S3::Paginator
 
     # :nodoc:
     private def query_string
-      @params.map { |k, v| "#{k}=#{URI.escape(v.to_s)}" }.join("&")
+      @params.map { |k, v| "#{k}=#{URI.encode_www_form(v.to_s)}" }.join("&")
     end
   end
 end

@@ -57,8 +57,8 @@ module Aws::S3
       end
     end
 
-    private def compute_default_part_size(source_size)
-      [(source_size / 10_000).ceil, 5 * 1024 * 1024].max
+    private def compute_default_part_size(source_size) : Int32
+      [(source_size / 10_000).ceil, 5 * 1024 * 1024].max.to_i
     end
 
     private def part_size(total_size, part_size, offset)
