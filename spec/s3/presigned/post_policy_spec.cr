@@ -7,7 +7,7 @@ module Aws
         describe "eq" do
           it "adds a field" do
             policy = Policy.new
-            policy.expiration(Time.now)
+            policy.expiration(Time.local)
             policy.condition("test", "test")
 
             policy.fields.size.should eq 1
@@ -15,7 +15,7 @@ module Aws
 
           it "returns self" do
             policy = Policy.new
-            policy.expiration(Time.now)
+            policy.expiration(Time.local)
 
             policy.condition("test", "test").should eq policy
           end
@@ -24,7 +24,7 @@ module Aws
         describe "valid?" do
           it "returns true if expiration is set" do
             policy = Policy.new
-            policy.expiration(Time.now)
+            policy.expiration(Time.local)
 
             policy.valid?.should be_true
           end

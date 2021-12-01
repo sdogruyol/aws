@@ -30,7 +30,7 @@ module Aws
 
           String.build do |str|
             str << "https://"
-            str << request.host
+            str << request.hostname
             str << request.resource
           end
         end
@@ -56,7 +56,7 @@ module Aws
           if @options.signer_version == :v4
             request.query_params.add("X-Amz-Expires", @options.expires.to_s)
           else
-            request.query_params.add("Expires", (Time.utc_now.to_unix + Time.unix(@options.expires).to_unix).to_s)
+            request.query_params.add("Expires", (Time.utc.to_unix + Time.unix(@options.expires).to_unix).to_s)
           end
 
           request
